@@ -1,0 +1,19 @@
+name: Plot and Store
+on: [push]
+jobs: 
+  Plot_and_store:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Packages
+        run: |
+          pip install numpy
+          pip install matplotlib
+      - name: Plot
+        run: python plot.py
+      - name: Upload artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: Plotted
+          path: plot.png
+       
